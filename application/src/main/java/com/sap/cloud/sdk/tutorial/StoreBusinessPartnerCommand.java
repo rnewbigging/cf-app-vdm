@@ -1,6 +1,6 @@
 package com.sap.cloud.sdk.tutorial;
 
-import com.sap.cloud.sdk.cloudplatform.connectivity.HttpDestination;
+import com.sap.cloud.sdk.cloudplatform.connectivity.Destination;
 import com.sap.cloud.sdk.cloudplatform.resilience.ResilienceConfiguration;
 import com.sap.cloud.sdk.cloudplatform.resilience.ResilienceDecorator;
 import com.sap.cloud.sdk.cloudplatform.resilience.ResilienceRuntimeException;
@@ -12,12 +12,12 @@ public class StoreBusinessPartnerCommand{
 
     private final BusinessPartnerService businessPartnerService;
     private final BusinessPartner businessPartner;
-    private final HttpDestination httpDestination;
+    private final Destination destination;
 
-    public StoreBusinessPartnerCommand(HttpDestination httpDestination, BusinessPartnerService businessPartnerService, BusinessPartner businessPartner) {
-        this.businessPartnerService = businessPartnerService;
+    public StoreBusinessPartnerCommand(Destination destination, BusinessPartnerService businessPartnerService, BusinessPartner businessPartner) {
+        this.businessPartnerService = businessPartnerService;;
         this.businessPartner = businessPartner;
-        this.httpDestination = httpDestination;
+        this.destination = destination;
     }
 
     public BusinessPartner execute() {
@@ -28,7 +28,7 @@ public class StoreBusinessPartnerCommand{
         try {
             return businessPartnerService
                     .createBusinessPartner(businessPartner)
-                    .executeRequest(httpDestination)
+                    .executeRequest(destination)
                     .getResponseEntity().get();
         } catch (final ODataException e) {
             throw new ResilienceRuntimeException(e);
