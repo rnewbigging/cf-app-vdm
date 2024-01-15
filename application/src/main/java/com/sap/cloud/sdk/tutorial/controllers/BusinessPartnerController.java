@@ -48,7 +48,7 @@ public class BusinessPartnerController
 
             return ResponseEntity.ok( new Gson().toJson(businessPartners));
         } catch (final Exception e) {
-            return ResponseEntity.internalServerError().body("Failed to fetch business partners.";
+            return ResponseEntity.internalServerError().body("Failed to fetch business partners.");
         }
     }
 

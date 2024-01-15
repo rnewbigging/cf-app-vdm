@@ -1,0 +1,11 @@
+{
+  "FirstName": "John",
+  "LastName": "Doe",
+  "to_BusinessPartnerAddress": [{
+    "Country": "US",
+    "CityName": "New York",
+    "to_EmailAddress": [{
+      "EmailAddress": "john@doe.com"
+    }]
+  }]
+}
